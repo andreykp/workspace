@@ -1,0 +1,8 @@
+git config --global core.autocrlf input
+
+# [user]
+#        email = andreykp@gmail.com
+#        name = Andrii Kravchyna
+#    [core]
+#            autocrlf = input
+#            editor = vim

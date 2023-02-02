@@ -1,0 +1,3 @@
+# todo install from backports
+
+apt-get install -t bullseye-backports rednotebook

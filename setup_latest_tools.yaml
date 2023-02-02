@@ -1,0 +1,43 @@
+---
+- hosts: localhost
+  become: true
+  tasks:
+        - name: install packages
+          apt:
+                state: latest
+                name:
+                      - vim
+                      - git
+                      - git-lfs
+                      - git-restore-mtime
+                      - dnsutils
+                      - rsnapshot
+                      - whois
+                      - sshfs
+                      - nfs-common
+
+- hosts: localhost
+  tasks:
+        # https://www.freecodecamp.org/news/bashrc-customization-guide/
+        - name: set bash env 1
+          lineinfile:
+                dest: ~/.bashrc
+                line: '{{ item }}'
+          with_items:
+                - '#ansible'
+                - HISTTIMEFORMAT="%F %T "
+                - alias cd..='cd ..'
+                - alias ..='cd ..;pwd'
+                - alias ...='cd ../..;pwd'
+                - alias ....='cd ../../..;pwd'
+
+        - name: set bash env HISTSIZE
+          lineinfile:
+                dest: ~/.bashrc
+                line: 'HISTSIZE=9001'
+                regex: 'HISTSIZE='
+        - name: set bash env HISTFILESIZE
+          lineinfile:
+                dest: ~/.bashrc
+                line: 'HISTFILESIZE=9001'
+                regex: 'HISTFILESIZE='
