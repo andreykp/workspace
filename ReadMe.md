@@ -4,7 +4,7 @@
 
 2 run:
 ```
-ansible-playbook -i inventory.ini setup_latest_tools.yml --ask-become
+ansible-playbook -i inventory.ini setup_latest_tools.yaml --ask-become
 
 ```
 

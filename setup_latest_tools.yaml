@@ -7,6 +7,7 @@
                 state: latest
                 name:
                       - vim
+                      - vim-syntastic
                       - git
                       - git-lfs
                       - git-restore-mtime
@@ -15,29 +16,31 @@
                       - whois
                       - sshfs
                       - nfs-common
+                      - command-not-found
 
 - hosts: localhost
   tasks:
         # https://www.freecodecamp.org/news/bashrc-customization-guide/
         - name: set bash env 1
-          lineinfile:
-                dest: ~/.bashrc
-                line: '{{ item }}'
-          with_items:
-                - '#ansible'
-                - HISTTIMEFORMAT="%F %T "
-                - alias cd..='cd ..'
-                - alias ..='cd ..;pwd'
-                - alias ...='cd ../..;pwd'
-                - alias ....='cd ../../..;pwd'
+          blockinfile:
+            path: ~/.bashrc
+            block: |
+                export SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket)
+                gpgconf --launch gpg-agent
+
+                HISTTIMEFORMAT="%F %T "
+                alias cd..='cd ..'
+                alias ..='cd ..;pwd'
+                alias ...='cd ../..;pwd'
+                alias ....='cd ../../..;pwd'
 
         - name: set bash env HISTSIZE
           lineinfile:
                 dest: ~/.bashrc
-                line: 'HISTSIZE=9001'
+                line: 'HISTSIZE=9000'
                 regex: 'HISTSIZE='
         - name: set bash env HISTFILESIZE
           lineinfile:
                 dest: ~/.bashrc
-                line: 'HISTFILESIZE=9001'
+                line: 'HISTFILESIZE=9000'
                 regex: 'HISTFILESIZE='
