@@ -1,0 +1,53 @@
+Setup instruction
+
+programs:
+
+- putty ( https://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html )
+	All defaults
+
+- Gpg4win ( https://gpg4win.org/download.html )
+	Configure after install:
+	Kleopatra - configure - GnuPG - Private keys 
+		- enable ssh support
+		- enable putty support
+	Kleopatra - smartCards
+		- check / generate keys all 3
+	> C:\Users\USER\AppData\Roaming\gnupg\gpg.conf
+	use-agent
+
+- git-bash ( https://git-scm.com/downloads )
+	- add to enviroment while install
+	- bundled ssh
+	
+	# create dir for socket
+	cd
+	mkdir .gnupg
+
+	# Add to .bashrc in GitBash
+	gpg-connect-agent killagent /bye
+	gpg-connect-agent  /bye
+	export SSH_AUTH_SOCK="/c/Users/adm1n/.gnupg/S.gpg-agent.ssh"
+
+	-- 
+	https://gist.github.com/matusnovak/302c7b003043849337f94518a71df777
+
+
+	!!! Git Bash переподключить юбик после запуска
+
+
+aditional, for WSL2:
+- Ubuntu on WSL2 on Windows 10 ( https://ubuntu.com/tutorials/install-ubuntu-on-wsl2-on-windows-10 )
+- wsl-ssh-pageant-amd64-gui.exe ( https://github.com/benpye/wsl-ssh-pageant/releases )
+	> mv to %ProgramFiles%\wsl-ssh-pageant-amd64-gui.exe
+- npiperelay ( https://github.com/jstarks/npiperelay/releases )
+	> npiperelay_windows_amd64.zip  >>>  %ProgramFiles%\npiperelay.exe
+	(In WSL2):~$ sudo ln -s /mnt/c/Program\ Files/npiperelay.exe /usr/local/bin/npiperelay.exe
+- socat 	(In WSL2):~$sudo apt install socat
+
+
+
+Add to startup:
+C:\Users\adm1n\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup\win_start_script.vbs
+
+Add to WSL2 .bashrc
+C:\Users\adm1n\Documents\Start_script_WSL.sh
