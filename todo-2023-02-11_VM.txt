@@ -1,0 +1,2 @@
+instruction for VM
+needed to run win-related software

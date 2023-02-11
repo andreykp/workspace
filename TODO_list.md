@@ -1,5 +1,12 @@
 ## TODO
 
+
+enable repo non-free
+https://wiki.debian.org/SourcesList#Example_sources.list
+
+
+
+
 sudo update-alternatives --config editor
 >> set VIM
 
@@ -10,6 +17,7 @@ git config --global core.editor "vim"
 * vi .bashrc
 
 * rednotebook preferences patch
+
 
 * set locale `EN_dk`
 
@@ -23,6 +31,15 @@ git config --global core.editor "vim"
         $ sudo locale-gen
 
         Now open Gnome 'Region & Language' settings again. ! REBOOT
+```
+root@kandrey5:~# cat /etc/locale.gen | grep -v '#'
+
+    en_DK.UTF-8 UTF-8
+    en_US.UTF-8 UTF-8
+    ru_RU.UTF-8 UTF-8
+    ru_UA.UTF-8 UTF-8
+    uk_UA.UTF-8 UTF-8
+```
 
 
 * apt install intel-microcode
@@ -53,13 +70,17 @@ git config --global core.editor "vim"
 * viber
 * discord
 * skype
+    skypeforlinux-64.deb
 * telegram
 * slack
 * rescuetime
 * pycharm
 * phpStorm
 * Postman
+    Postman-linux-x64-7.8.0.tar.gz
 * firefox developer
+* keepassxc
+
 
 
 * disable CAPS_LOCK
@@ -106,11 +127,6 @@ sudo apt-get install nfs-kernel-server
 ```
 edit /etc/exports
 
-### NFS client
-```
-apt install nfs-common
-```
-
 
 VPN
 ```
@@ -118,7 +134,3 @@ network-manager-openvpn-gnome
 ```
 
 network-manager -- wireguard
-
-
-sudo apt install command-not-found
-
