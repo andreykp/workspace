@@ -1,8 +1,9 @@
 ---
-- hosts: localhost
+- name: Install with root privileges
+  hosts: localhost
   become: true
   tasks:
-        - name: install packages
+        - name: Install apt packages
           apt:
                 state: latest
                 name:
@@ -15,31 +16,45 @@
                       - rsnapshot
                       - whois
                       - sshfs
+                      # NFS client
                       - nfs-common
+                      # bash helper
                       - command-not-found
+                      - build-essential
+                      - rsync
 
-- hosts: localhost
+        - name: Set HISTTIMEFORMAT globaly
+          lineinfile:
+                dest: /etc/profile.d/timestamp.sh
+                line: 'HISTTIMEFORMAT="%Y%m%d %T "'
+                regex: 'HIST'
+                create: true
+                mode: "a+rx"
+
+
+- name: Install user preferences
+  hosts: localhost
   tasks:
         # https://www.freecodecamp.org/news/bashrc-customization-guide/
-        - name: set bash env 1
+        - name: Set bash env 1
           blockinfile:
-            path: ~/.bashrc
-            block: |
-                export SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket)
-                gpgconf --launch gpg-agent
+                path: ~/.bashrc
+                block: |
+                  export SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket)
+                  gpgconf --launch gpg-agent
 
-                HISTTIMEFORMAT="%F %T "
-                alias cd..='cd ..'
-                alias ..='cd ..;pwd'
-                alias ...='cd ../..;pwd'
-                alias ....='cd ../../..;pwd'
+                  HISTTIMEFORMAT="%F %T "
+                  alias cd..='cd ..'
+                  alias ..='cd ..;pwd'
+                  alias ...='cd ../..;pwd'
+                  alias ....='cd ../../..;pwd'
 
-        - name: set bash env HISTSIZE
+        - name: Set bash env HISTSIZE
           lineinfile:
                 dest: ~/.bashrc
                 line: 'HISTSIZE=9000'
                 regex: 'HISTSIZE='
-        - name: set bash env HISTFILESIZE
+        - name: Set bash env HISTFILESIZE
           lineinfile:
                 dest: ~/.bashrc
                 line: 'HISTFILESIZE=9000'
