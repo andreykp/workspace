@@ -14,20 +14,22 @@ git clone https://gitlab.com/andreykp/linux-workspace-config-log.git
 install ansible with Python
 
 ```sh
+sudo su - 
+
 python3 -m pip install --upgrade pip
 
 pip -V
-#pip 20.3.4 from /usr/lib/python3/dist-packages/pip (python 3.9)
+# pip 23.0 from /usr/local/lib/python3.9/dist-packages/pip (python 3.9)
 
-sudo pip install ansible
-ansible --version
 python3 -m pip install --upgrade ansible ansible-lint
+ansible --version
+# ansible [core 2.14.2]
 ```
 
 
 ### run ###
 
 ```
-ansible-playbook -i inventory.ini setup_latest_tools.yaml --ask-become
+ansible-playbook -i inventory.ini setup_latest_tools.yaml --ask-become -e '{"stderr_callback":"debug"}' -v
 
 ```

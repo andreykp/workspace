@@ -18,29 +18,6 @@ https://snapcraft.io/docs/installing-snapd
     snap connect steam:process-control
 
 
-## OLD way ##
+### todo ###
 
-
-/etc/apt/sources.list.d/steam.list
-
-```gitdiff
--#deb [arch=amd64,i386] http://repo.steampowered.com/steam/ stable steam
--#deb-src [arch=amd64,i386] http://repo.steampowered.com/steam/ stable steam
--deb [arch=amd64] http://repo.steampowered.com/steam/ stable steam
--deb-src [arch=amd64] http://repo.steampowered.com/steam/ stable steam
-+deb [arch=amd64,i386] https://repo.steampowered.com/steam/ stable steam
-+deb-src [arch=amd64,i386] https://repo.steampowered.com/steam/ stable steam
-+
-+# Uncomment these lines to try the beta version of the Steam launcher
-+#deb [arch=amd64,i386] https://repo.steampowered.com/steam/ beta steam
-+#deb-src [arch=amd64,i386] https://repo.steampowered.com/steam/ beta steam
-```
-
-
-install
-```
-# sudo apt-get install --install-suggests steam-launcher
-
-sudo snap install steam --beta
-```
-
+Create desktop / menu icon

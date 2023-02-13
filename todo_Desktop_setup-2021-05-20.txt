@@ -1,0 +1,9 @@
+# https://github.com/nodesource/distributions
+
+
+apt update
+curl -fsSL https://deb.nodesource.com/setup_18.x | bash - &&\
+apt-get install -y nodejs
+
+
+apt-get install build-essential nodejs

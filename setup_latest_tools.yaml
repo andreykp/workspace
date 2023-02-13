@@ -32,14 +32,32 @@
                       - ansible-lint
                       - virtualenv
 
+        # swappiness /etc/sysctl.d/99-sysctl.conf:vm.swappiness=0
+        - name: Set swappiness 0
+          ansible.builtin.lineinfile:
+                dest: /etc/sysctl.d/99-sysctl.conf
+                line: 'vm.swappiness=0'
+                regex: 'vm.swappiness='
+                create: true
+                mode: "a+rx"
 
         - name: Set HISTTIMEFORMAT globaly
           ansible.builtin.lineinfile:
                 dest: /etc/profile.d/timestamp.sh
-                line: 'HISTTIMEFORMAT="%Y%m%d %T "'
+                line: 'HISTTIMEFORMAT="%F %T "'
                 regex: 'HIST'
                 create: true
                 mode: "a+rx"
+
+        - name: Ensure a locale exists
+          community.general.locale_gen:
+                name: "{{ item }}"
+          with_items:
+                - en_US.UTF-8
+                - en_DK.UTF-8
+                - ru_RU.UTF-8
+                - ru_UA.UTF-8
+                - uk_UA.UTF-8
 
 
 - name: Install user preferences
@@ -82,11 +100,13 @@
                 scope: global
                 value: andreykp@gmail.com
 
+        # git config --global core.editor "vim"
         - name: Set git_config core.editor vim
           community.general.git_config:
                 name: core.editor
                 scope: global
                 value: vim
+
         # git config --global core.autocrlf input
         - name: Set git_config core.autocrlf input
           community.general.git_config:

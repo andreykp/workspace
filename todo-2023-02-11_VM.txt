@@ -1,2 +1,2 @@
-instruction for VM
+todo: write instruction for VM
 needed to run win-related software

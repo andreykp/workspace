@@ -6,14 +6,10 @@ https://wiki.debian.org/SourcesList#Example_sources.list
 
 
 
-
+* Default editor
 sudo update-alternatives --config editor
 >> set VIM
 
-* Default editor
-git config --global core.editor "vim"
-
-* git environment variables ( git config --global --edit )
 * vi .bashrc
 
 * rednotebook preferences patch
@@ -32,14 +28,6 @@ git config --global core.editor "vim"
 
         Now open Gnome 'Region & Language' settings again. ! REBOOT
 ```
-root@kandrey5:~# cat /etc/locale.gen | grep -v '#'
-
-    en_DK.UTF-8 UTF-8
-    en_US.UTF-8 UTF-8
-    ru_RU.UTF-8 UTF-8
-    ru_UA.UTF-8 UTF-8
-    uk_UA.UTF-8 UTF-8
-```
 
 
 * apt install intel-microcode
@@ -50,16 +38,7 @@ root@kandrey5:~# cat /etc/locale.gen | grep -v '#'
 
 * `~/.ssh/config`
 
-* `/proc/sys/vm/swappiness` | `
 
-    > Add this to the end of "/etc/sysctl.conf":
-
-    > # my custom swappiness setting
-
-    > vm.swappiness=0
-
-
-* `echo 'HISTTIMEFORMAT="%F %T "' >> ~/.bashrc`
 
 * `~/.rednotebook/data/`
 
@@ -74,10 +53,13 @@ root@kandrey5:~# cat /etc/locale.gen | grep -v '#'
 * telegram
 * slack
 * rescuetime
+    - install
+    - set startup auto
 * pycharm
 * phpStorm
 * Postman
-    Postman-linux-x64-7.8.0.tar.gz
+    - curl -o- "https://dl-cli.pstmn.io/install/linux64.sh" | sh
+    - Postman-linux-x64-7.8.0.tar.gz
 * firefox developer
 * keepassxc
 
