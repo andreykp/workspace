@@ -22,6 +22,16 @@
                       - command-not-found
                       - build-essential
                       - rsync
+                      - python3
+                      - python3-pip
+
+        - name: Install pip packages
+          ansible.builtin.pip:
+                name:
+                      - ansible
+                      - ansible-lint
+                      - virtualenv
+
 
         - name: Set HISTTIMEFORMAT globaly
           ansible.builtin.lineinfile:
@@ -62,24 +72,24 @@
 
 
         - name: Set git_config name Andrii Kravchyna
-          git_config:
+          community.general.git_config:
                 name: user.name
                 scope: global
                 value: Andrii Kravchyna
         - name: Set git_config email andreykp@gmail.com
-          git_config:
+          community.general.git_config:
                 name: user.email
                 scope: global
                 value: andreykp@gmail.com
 
         - name: Set git_config core.editor vim
-          git_config:
+          community.general.git_config:
                 name: core.editor
                 scope: global
                 value: vim
         # git config --global core.autocrlf input
         - name: Set git_config core.autocrlf input
-          git_config:
+          community.general.git_config:
                 name: core.autocrlf
                 scope: global
                 value: input
