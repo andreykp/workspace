@@ -4,8 +4,8 @@
   become: true
   tasks:
         - name: Install apt packages
-          apt:
-                state: latest
+          ansible.builtin.apt:
+                state: present
                 name:
                       - vim
                       - vim-syntastic
@@ -24,7 +24,7 @@
                       - rsync
 
         - name: Set HISTTIMEFORMAT globaly
-          lineinfile:
+          ansible.builtin.lineinfile:
                 dest: /etc/profile.d/timestamp.sh
                 line: 'HISTTIMEFORMAT="%Y%m%d %T "'
                 regex: 'HIST'
@@ -37,7 +37,7 @@
   tasks:
         # https://www.freecodecamp.org/news/bashrc-customization-guide/
         - name: Set bash env 1
-          blockinfile:
+          ansible.builtin.blockinfile:
                 path: ~/.bashrc
                 block: |
                   export SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket)
@@ -50,12 +50,12 @@
                   alias ....='cd ../../..;pwd'
 
         - name: Set bash env HISTSIZE
-          lineinfile:
+          ansible.builtin.lineinfile:
                 dest: ~/.bashrc
                 line: 'HISTSIZE=9000'
                 regex: 'HISTSIZE='
         - name: Set bash env HISTFILESIZE
-          lineinfile:
+          ansible.builtin.lineinfile:
                 dest: ~/.bashrc
                 line: 'HISTFILESIZE=9000'
                 regex: 'HISTFILESIZE='
@@ -63,24 +63,23 @@
 
         - name: Set git_config name Andrii Kravchyna
           git_config:
-            name: user.name
-            scope: global
-            value: Andrii Kravchyna
-
+                name: user.name
+                scope: global
+                value: Andrii Kravchyna
         - name: Set git_config email andreykp@gmail.com
           git_config:
-            name: user.email
-            scope: global
-            value: andreykp@gmail.com
+                name: user.email
+                scope: global
+                value: andreykp@gmail.com
 
         - name: Set git_config core.editor vim
           git_config:
-            name: core.editor
-            scope: global
-            value: vim
+                name: core.editor
+                scope: global
+                value: vim
         # git config --global core.autocrlf input
         - name: Set git_config core.autocrlf input
           git_config:
-            name: core.autocrlf
-            scope: global
-            value: input
+                name: core.autocrlf
+                scope: global
+                value: input
