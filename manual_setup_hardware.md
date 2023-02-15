@@ -1,11 +1,14 @@
+
+CPU
+```
 sudo apt install intel-microcode
+```
 
 
-
-
+grub
 > So to use enable_mtrr_cleanup you'll add it like this:
 > GRUB_CMDLINE_LINUX_DEFAULT="quiet splash enable_mtrr_cleanup"
-
+> 
 > mtrr_spare_reg_num
 
 ```
@@ -19,6 +22,7 @@ Network card
 apt install firmware-realtek
 apt install --reinstall firmware-misc-nonfree
 ```
+
 
 VideoCard
 ```

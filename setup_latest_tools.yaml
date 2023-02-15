@@ -24,6 +24,13 @@
                       - rsync
                       - python3
                       - python3-pip
+                      - python3-gpg
+                      - jq
+                          # old journaling app
+                      - rednotebook
+                          # browser
+                      - chromium
+                      - firefox-esr
 
         - name: Install pip packages
           ansible.builtin.pip:

@@ -1,3 +1,6 @@
+### try install snap telegram ###
+
+```
 sudo apt update 
 sudo apt upgrade 
 
@@ -10,10 +13,12 @@ sudo snap install core
 sudo snap install telegram-desktop
 
 telegram-desktop 
+```
 
 
-----
+### try fix apparmor ###
 
+```
 apparmor_parser -r /etc/apparmor.d/*snap-confine*
 apparmor_parser -r /var/lib/snapd/apparmor/profiles/snap-confine*
 
@@ -24,3 +29,4 @@ apt install --reinstall apparmor-utils
 sudo aa-complain /etc/apparmor.d/*
 
 sudo apt install --reinstall apparmor
+```
