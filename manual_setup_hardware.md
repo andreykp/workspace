@@ -1,3 +1,7 @@
+check / enable non-free
+
+<https://wiki.debian.org/SourcesList#Example_sources.list>
+
 
 CPU
 ```
@@ -32,3 +36,6 @@ find -name ucode_load.bin
 cp -r gp107/acr gv100/
 sudo apt install --reinstall firmware-misc-nonfree
 ```
+
+check `dmesg` try fix all
+    Warning
