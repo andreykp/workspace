@@ -31,6 +31,7 @@ sudo update-alternatives --config editor
 
 * sudo apt install gnome-shell-extension-appindicator
 
+
 * https://ep.gnt.md/index.php/how-to-install-and-enable-gnome-system-tray-icons-in-debian-10/
 
 * `~/.ssh/config`
@@ -72,9 +73,9 @@ sudo update-alternatives --config editor
 
 
 * backup disk
-    > offline disk
+    > offline disk - USB
     > rsnapshot
-    > online backup
+    > online backup - cloud
     > sync (dropbox?)
 
 * ansible config
