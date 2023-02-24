@@ -37,5 +37,11 @@ cp -r gp107/acr gv100/
 sudo apt install --reinstall firmware-misc-nonfree
 ```
 
+VideoCard v2
+```
+install nvidia-detect
+run nvidia-detect
+```
+
 check `dmesg` try fix all
     Warning

@@ -41,6 +41,8 @@ ansible-playbook -i inventory.ini setup_latest_tools.yaml --ask-become -e '{"std
 
 [node JS](manual_install_nodejs.md)
 
+[rkhunter](manual_install_rkhunter.md)
+
 [steam](manual_install_steam.md)
 
 [VS Code](manual_install_VSCode.md)
@@ -52,6 +54,8 @@ ansible-playbook -i inventory.ini setup_latest_tools.yaml --ask-become -e '{"std
 [rsnapshot](manual_setup_rsnapshot.md)
 
 [telegram](manual_setup_telegram-snapd.md)
+
+[time sync](manual_setup_time_sync.md)
 
 [virtualization](manual_setup_virtualization.md)
 
