@@ -39,14 +39,7 @@
                       - ansible-lint
                       - virtualenv
 
-        # swappiness /etc/sysctl.d/99-sysctl.conf:vm.swappiness=0
-        - name: Set swappiness 0
-          ansible.builtin.lineinfile:
-                dest: /etc/sysctl.d/99-sysctl.conf
-                line: 'vm.swappiness=0'
-                regex: 'vm.swappiness='
-                create: true
-                mode: "a+rx"
+
 
         - name: Set HISTTIMEFORMAT globaly
           ansible.builtin.lineinfile:

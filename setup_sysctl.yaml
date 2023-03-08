@@ -1,0 +1,59 @@
+---
+- name: Install with root privileges
+  hosts: localhost
+  become: true
+  vars:
+    sysctl_set: true
+    state: present
+    reload: true
+    sysctl_file: /etc/sysctl.d/99-sysctl.conf
+
+  tasks:
+    # https://tldp.org/HOWTO/TCP-Keepalive-HOWTO/usingkeepalive.html
+    - name: Set sysctl tcp_keepalive_time
+      ansible.posix.sysctl:
+        name: net.ipv4.tcp_keepalive_time
+        value: 599
+
+    - name: Set sysctl tcp_keepalive_intvl
+      ansible.posix.sysctl:
+        name: net.ipv4.tcp_keepalive_intvl
+        value: 59
+
+    - name: Set sysctl tcp_keepalive_probes
+      ansible.posix.sysctl:
+        name: net.ipv4.tcp_keepalive_probes
+        value: 20
+
+    # Additional settings improve the network security
+    - name: Set sysctl ipv4 accept_redirects 0
+      ansible.posix.sysctl:
+        name: net.ipv4.conf.all.accept_redirects
+        value: 0
+
+    - name: Set sysctl ipv6 accept_redirects 0
+      ansible.posix.sysctl:
+        name: net.ipv6.conf.all.accept_redirects
+        value: 0
+
+    - name: Set sysctl ipv4 send_redirects 0
+      ansible.posix.sysctl:
+        name: net.ipv4.conf.all.send_redirects
+        value: 0
+
+    - name: Set sysctl ipv4 accept_source_route 0
+      ansible.posix.sysctl:
+        name: net.ipv4.conf.all.accept_source_route
+        value: 0
+
+    - name: Set sysctl ipv6 accept_source_route 0
+      ansible.posix.sysctl:
+        name: net.ipv6.conf.all.accept_source_route
+        value: 0
+
+    - name: Set sysctl swappiness 0
+      ansible.posix.sysctl:
+        name: vm.swappiness
+        value: 0
+
+# todo: ansible-galaxy collection install ansible.posix

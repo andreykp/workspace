@@ -32,6 +32,8 @@ ansible --version
 ```
 ansible-playbook -i inventory.ini setup_latest_tools.yaml --ask-become -e '{"stderr_callback":"debug"}' -v
 
+ansible-playbook -i inventory.ini setup_sysctl.yaml --ask-become -e '{"stderr_callback":"debug"}' -v
+
 ```
 
 
